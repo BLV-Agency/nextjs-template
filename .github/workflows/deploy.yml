@@ -10,7 +10,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Notify Discord — build started
+        run: |
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"embeds\": [{
+                \"title\": \"🔨 Build en cours...\",
+                \"description\": \"**${{ github.repository }}**\nCommit : \`${{ github.sha }}\` par **${{ github.actor }}**\n> ${{ github.event.head_commit.message }}\",
+                \"color\": 16776960,
+                \"footer\": {\"text\": \"BLV Agency CI/CD\"}
+              }]
+            }"
+
       - name: Deploy via SSH
+        id: deploy
         uses: appleboy/ssh-action@v1
         with:
           host: 167.233.37.213
@@ -20,3 +34,40 @@ jobs:
             cd /opt/blv/sites/${{ secrets.SITE_NAME }}
             git pull origin main
             docker compose --env-file .env up -d --build
+
+      - name: Notify Discord — success
+        if: success()
+        run: |
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"embeds\": [{
+                \"title\": \"✅ Déployé avec succès\",
+                \"description\": \"**${{ github.repository }}**\nCommit : \`${{ github.sha }}\`\n> ${{ github.event.head_commit.message }}\",
+                \"color\": 5763719,
+                \"fields\": [
+                  {\"name\": \"Auteur\", \"value\": \"${{ github.actor }}\", \"inline\": true},
+                  {\"name\": \"Branche\", \"value\": \"${{ github.ref_name }}\", \"inline\": true},
+                  {\"name\": \"Logs\", \"value\": \"[${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\", \"inline\": true}
+                ],
+                \"footer\": {\"text\": \"BLV Agency CI/CD\"}
+              }]
+            }"
+
+      - name: Notify Discord — failure
+        if: failure()
+        run: |
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"embeds\": [{
+                \"title\": \"❌ Déploiement échoué\",
+                \"description\": \"**${{ github.repository }}**\nCommit : \`${{ github.sha }}\`\n> ${{ github.event.head_commit.message }}\n\n[🔍 Voir les logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})\",
+                \"color\": 15548997,
+                \"fields\": [
+                  {\"name\": \"Auteur\", \"value\": \"${{ github.actor }}\", \"inline\": true},
+                  {\"name\": \"Branche\", \"value\": \"${{ github.ref_name }}\", \"inline\": true}
+                ],
+                \"footer\": {\"text\": \"BLV Agency CI/CD\"}
+              }]
+            }"
