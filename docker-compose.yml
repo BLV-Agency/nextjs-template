@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    restart: always
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${SITE_NAME}.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.${SITE_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${SITE_NAME}.tls.certresolver=letsencrypt"
+networks:
+  web:
+    external: true
