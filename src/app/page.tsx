@@ -1,4 +1,3 @@
-
 export default function Home() {
   return (
     <main
@@ -13,32 +12,28 @@ export default function Home() {
         backgroundColor: "#f6f5f4",
       }}
     >
-      {/* Figma grid — soft-light overlay */}
-      <img
-        src="/coming-soon/grid-1.svg"
-        alt=""
+      {/* Grid CSS — lignes fines comme dans Figma */}
+      <div
         style={{
           position: "absolute",
           inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          mixBlendMode: "soft-light",
-          opacity: 0.54,
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,0,0.07) 1px, transparent 1px)
+          `,
+          backgroundSize: "90px 90px",
           pointerEvents: "none",
         }}
       />
-      <img
-        src="/coming-soon/grid-2.svg"
-        alt=""
+
+      {/* Croix aux intersections */}
+      <div
         style={{
           position: "absolute",
           inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          mixBlendMode: "soft-light",
-          opacity: 0.54,
+          backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.12) 1px, transparent 1px)`,
+          backgroundSize: "90px 90px",
+          backgroundPosition: "0 0",
           pointerEvents: "none",
         }}
       />
@@ -58,8 +53,6 @@ export default function Home() {
           pointerEvents: "none",
         }}
       />
-
-      {/* Interactive hover grid on top */}
 
       {/* Center content */}
       <div
