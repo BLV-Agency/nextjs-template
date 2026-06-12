@@ -1,4 +1,3 @@
-import GridBackground from "./GridBackground";
 
 export default function Home() {
   return (
@@ -61,7 +60,6 @@ export default function Home() {
       />
 
       {/* Interactive hover grid on top */}
-      <GridBackground />
 
       {/* Center content */}
       <div
