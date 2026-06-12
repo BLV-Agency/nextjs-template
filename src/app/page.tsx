@@ -1,3 +1,5 @@
+import GridBackground from "./GridBackground";
+
 export default function Home() {
   return (
     <main
@@ -12,39 +14,8 @@ export default function Home() {
         backgroundColor: "#f6f5f4",
       }}
     >
-      {/* Grid overlay 1 */}
-      <img
-        src="/coming-soon/grid-1.svg"
-        alt=""
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          mixBlendMode: "soft-light",
-          opacity: 0.54,
-          pointerEvents: "none",
-        }}
-      />
+      <GridBackground />
 
-      {/* Grid overlay 2 */}
-      <img
-        src="/coming-soon/grid-2.svg"
-        alt=""
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          mixBlendMode: "soft-light",
-          opacity: 0.54,
-          pointerEvents: "none",
-        }}
-      />
-
-      {/* Noise bottom */}
       <img
         src="/coming-soon/noise.png"
         alt=""
@@ -60,7 +31,6 @@ export default function Home() {
         }}
       />
 
-      {/* Center content */}
       <div
         style={{
           position: "relative",
@@ -68,30 +38,79 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: "24px",
+          gap: "28px",
+          pointerEvents: "none",
+          userSelect: "none",
         }}
       >
+        {/* Logo */}
         <img
           src="/coming-soon/logo.svg"
           alt="BLV Agency"
-          width={174}
-          height={115}
+          width={140}
+          height={92}
           style={{ display: "block" }}
         />
-        <p
+
+        {/* Separator */}
+        <div style={{ width: "32px", height: "1px", background: "rgba(0,0,0,0.15)" }} />
+
+        {/* Text block */}
+        <div
           style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: "25px",
-            fontWeight: 400,
-            letterSpacing: "-1px",
-            lineHeight: "normal",
-            color: "#000000",
-            margin: 0,
-            whiteSpace: "nowrap",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "10px",
+            textAlign: "center",
           }}
         >
-          Under construction... 🚧
-        </p>
+          <p
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: "13px",
+              fontWeight: 500,
+              letterSpacing: "0.12em",
+              color: "rgba(0,0,0,0.4)",
+              margin: 0,
+              textTransform: "uppercase",
+            }}
+          >
+            Site en construction
+          </p>
+          <p
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: "14px",
+              fontWeight: 400,
+              color: "rgba(0,0,0,0.35)",
+              margin: 0,
+              letterSpacing: "0.01em",
+              maxWidth: "280px",
+              lineHeight: "1.7",
+            }}
+          >
+            Notre équipe travaille sur ce projet.
+            <br />
+            Revenez bientôt.
+          </p>
+        </div>
+
+        {/* Bottom line + year */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
+          <div style={{ width: "20px", height: "1px", background: "rgba(0,0,0,0.1)" }} />
+          <span
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: "11px",
+              fontWeight: 400,
+              letterSpacing: "0.1em",
+              color: "rgba(0,0,0,0.25)",
+            }}
+          >
+            BLV Agency — {new Date().getFullYear()}
+          </span>
+        </div>
       </div>
     </main>
   );
