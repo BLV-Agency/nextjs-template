@@ -72,7 +72,7 @@ export default function Home() {
         }}
       >
         <img
-          src="/coming-soon/logo.png"
+          src="/coming-soon/logo.svg"
           alt="BLV Agency"
           width={174}
           height={115}
