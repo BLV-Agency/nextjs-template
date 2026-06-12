@@ -1,34 +1,94 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <main
-      className="relative w-full h-screen overflow-hidden flex items-center justify-center"
-      style={{ backgroundColor: "#f6f5f4" }}
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100vh",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#f6f5f4",
+      }}
     >
+      {/* Grid overlay 1 */}
+      <img
+        src="/coming-soon/grid-1.svg"
+        alt=""
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          mixBlendMode: "soft-light",
+          opacity: 0.54,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Grid overlay 2 */}
+      <img
+        src="/coming-soon/grid-2.svg"
+        alt=""
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          mixBlendMode: "soft-light",
+          opacity: 0.54,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Noise bottom */}
+      <img
+        src="/coming-soon/noise.png"
+        alt=""
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "350px",
+          objectFit: "cover",
+          opacity: 0.04,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Center content */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ mixBlendMode: "soft-light", opacity: 0.54 }}
+        style={{
+          position: "relative",
+          zIndex: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "24px",
+        }}
       >
-        <Image src="/coming-soon/grid-1.svg" alt="" fill className="object-cover" priority />
-      </div>
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ mixBlendMode: "soft-light", opacity: 0.54 }}
-      >
-        <Image src="/coming-soon/grid-2.svg" alt="" fill className="object-cover" priority />
-      </div>
-      <div
-        className="absolute bottom-0 left-0 w-full h-[350px] pointer-events-none"
-        style={{ opacity: 0.04 }}
-      >
-        <Image src="/coming-soon/noise.png" alt="" fill className="object-cover" />
-      </div>
-      <div className="relative flex flex-col items-center gap-6 z-10">
-        <Image src="/coming-soon/logo.png" alt="BLV Agency" width={174} height={115} priority />
+        <img
+          src="/coming-soon/logo.png"
+          alt="BLV Agency"
+          width={174}
+          height={115}
+          style={{ display: "block" }}
+        />
         <p
-          className="text-black font-normal whitespace-nowrap"
-          style={{ fontFamily: "'Montserrat', sans-serif", fontSize: "25px", letterSpacing: "-1px" }}
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: "25px",
+            fontWeight: 400,
+            letterSpacing: "-1px",
+            lineHeight: "normal",
+            color: "#000000",
+            margin: 0,
+            whiteSpace: "nowrap",
+          }}
         >
           Under construction... 🚧
         </p>
