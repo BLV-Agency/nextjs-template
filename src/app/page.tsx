@@ -12,31 +12,65 @@ export default function Home() {
         backgroundColor: "#f6f5f4",
       }}
     >
-      {/* Grid CSS — lignes fines comme dans Figma */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(0,0,0,0.07) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(0,0,0,0.07) 1px, transparent 1px)
-          `,
-          backgroundSize: "90px 90px",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Grid layer — exact Figma positioning */}
+      <div style={{ position: "absolute", inset: 0 }}>
 
-      {/* Croix aux intersections */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `radial-gradient(circle, rgba(0,0,0,0.12) 1px, transparent 1px)`,
-          backgroundSize: "90px 90px",
-          backgroundPosition: "0 0",
-          pointerEvents: "none",
-        }}
-      />
+        {/* Vector 1 — inset: 8.79% -28.31% -35.94% -21.31%, rotate -1.72deg */}
+        <div
+          style={{
+            position: "absolute",
+            top: "8.79%",
+            right: "-28.31%",
+            bottom: "-35.94%",
+            left: "-21.31%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mixBlendMode: "multiply",
+          }}
+        >
+          <img
+            src="/coming-soon/grid-1.svg"
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              transform: "rotate(-1.72deg)",
+              opacity: 0.54,
+              objectFit: "fill",
+              display: "block",
+            }}
+          />
+        </div>
+
+        {/* Vector 2 — inset: 6.94% -29.35% -37.79% -22.34%, rotate -1.72deg */}
+        <div
+          style={{
+            position: "absolute",
+            top: "6.94%",
+            right: "-29.35%",
+            bottom: "-37.79%",
+            left: "-22.34%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mixBlendMode: "multiply",
+          }}
+        >
+          <img
+            src="/coming-soon/grid-2.svg"
+            alt=""
+            style={{
+              width: "100%",
+              height: "100%",
+              transform: "rotate(-1.72deg)",
+              opacity: 0.54,
+              objectFit: "fill",
+              display: "block",
+            }}
+          />
+        </div>
+      </div>
 
       {/* Noise bottom */}
       <img
